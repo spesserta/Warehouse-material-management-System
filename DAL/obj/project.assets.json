@@ -75,6 +75,16 @@
         "runtime": {
           "bin/placeholder/Models.dll": {}
         }
+      },
+      "Util/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/Util.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Util.dll": {}
+        }
       }
     }
   },
@@ -179,12 +189,18 @@
       "type": "project",
       "path": "../Models/Models.csproj",
       "msbuildProject": "../Models/Models.csproj"
+    },
+    "Util/1.0.0": {
+      "type": "project",
+      "path": "../Util/Util.csproj",
+      "msbuildProject": "../Util/Util.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
       "Models >= 1.0.0",
-      "System.Data.SqlClient >= 4.9.1"
+      "System.Data.SqlClient >= 4.9.1",
+      "Util >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -217,6 +233,9 @@
           "projectReferences": {
             "C:\\Users\\Legion\\Desktop\\项目合集\\WarehouseManageSystem\\Models\\Models.csproj": {
               "projectPath": "C:\\Users\\Legion\\Desktop\\项目合集\\WarehouseManageSystem\\Models\\Models.csproj"
+            },
+            "C:\\Users\\Legion\\Desktop\\项目合集\\WarehouseManageSystem\\Util\\Util.csproj": {
+              "projectPath": "C:\\Users\\Legion\\Desktop\\项目合集\\WarehouseManageSystem\\Util\\Util.csproj"
             }
           }
         }
@@ -536,13 +555,5 @@
         }
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "获取包漏洞数据时出错: 无法加载源 https://api.nuget.org/v3/index.json 的服务索引。"
-    }
-  ]
+  }
 }

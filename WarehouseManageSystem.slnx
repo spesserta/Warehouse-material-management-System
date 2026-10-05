@@ -2,5 +2,6 @@
   <Project Path="BLL/BLL.csproj" Id="b66c716c-b684-4d11-97e3-fd582be83671" />
   <Project Path="DAL/DAL.csproj" Id="2728b1df-f6a0-4244-aad7-d84b3f92e642" />
   <Project Path="Models/Models.csproj" Id="43620aff-409e-4c56-9e77-2fe4dbeaca27" />
+  <Project Path="Util/Util.csproj" Id="f86653a5-2565-40cf-8988-60cf248b913d" />
   <Project Path="WarehouseManageSystem/WarehouseManageSystemUI.csproj" />
 </Solution>

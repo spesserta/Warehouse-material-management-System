@@ -21,8 +21,10 @@ C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\BLL\bin\Debug\net10.0
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\BLL\bin\Debug\net10.0\BLL.pdb
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\BLL\bin\Debug\net10.0\DAL.dll
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\BLL\bin\Debug\net10.0\Models.dll
+C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\BLL\bin\Debug\net10.0\Util.dll
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\BLL\bin\Debug\net10.0\DAL.pdb
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\BLL\bin\Debug\net10.0\Models.pdb
+C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\BLL\bin\Debug\net10.0\Util.pdb
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\BLL\obj\Debug\net10.0\BLL.csproj.AssemblyReference.cache
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\BLL\obj\Debug\net10.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\BLL\obj\Debug\net10.0\BLL.AssemblyInfoInputs.cache

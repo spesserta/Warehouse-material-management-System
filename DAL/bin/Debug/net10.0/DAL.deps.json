@@ -9,7 +9,8 @@
       "DAL/1.0.0": {
         "dependencies": {
           "Models": "1.0.0",
-          "System.Data.SqlClient": "4.9.1"
+          "System.Data.SqlClient": "4.9.1",
+          "Util": "1.0.0"
         },
         "runtime": {
           "DAL.dll": {}
@@ -81,6 +82,14 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "Util/1.0.0": {
+        "runtime": {
+          "Util.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -126,6 +135,11 @@
       "hashPath": "system.data.sqlclient.4.9.1.nupkg.sha512"
     },
     "Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Util/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

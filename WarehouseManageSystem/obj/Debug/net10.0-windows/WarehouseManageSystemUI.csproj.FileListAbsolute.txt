@@ -56,8 +56,10 @@ C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\WarehouseManageSystem
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\WarehouseManageSystem\bin\Debug\net10.0-windows\BLL.dll
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\WarehouseManageSystem\bin\Debug\net10.0-windows\DAL.dll
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\WarehouseManageSystem\bin\Debug\net10.0-windows\Models.dll
+C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\WarehouseManageSystem\bin\Debug\net10.0-windows\Util.dll
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\WarehouseManageSystem\bin\Debug\net10.0-windows\BLL.pdb
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\WarehouseManageSystem\bin\Debug\net10.0-windows\Models.pdb
+C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\WarehouseManageSystem\bin\Debug\net10.0-windows\Util.pdb
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\WarehouseManageSystem\bin\Debug\net10.0-windows\DAL.pdb
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\WarehouseManageSystem\obj\Debug\net10.0-windows\WarehouseManageSystemUI.csproj.AssemblyReference.cache
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\WarehouseManageSystem\obj\Debug\net10.0-windows\WarehouseManageSystemUI.AddForm.resources

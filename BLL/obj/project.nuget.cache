@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hBN21/Cdog4=",
+  "dgSpecHash": "Esq+Jjbgy+U=",
   "success": true,
   "projectFilePath": "C:\\Users\\Legion\\Desktop\\项目合集\\WarehouseManageSystem\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
@@ -10,15 +10,5 @@
     "C:\\Users\\Legion\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\system.data.sqlclient\\4.9.1\\system.data.sqlclient.4.9.1.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "message": "获取包漏洞数据时出错: 无法加载源 https://api.nuget.org/v3/index.json 的服务索引。",
-      "projectPath": "C:\\Users\\Legion\\Desktop\\项目合集\\WarehouseManageSystem\\BLL\\BLL.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\Legion\\Desktop\\项目合集\\WarehouseManageSystem\\BLL\\BLL.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }

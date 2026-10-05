@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Util;
 using WarehouseManageSystem;
 
 namespace WarehouseManageSystemUI
@@ -16,8 +17,15 @@ namespace WarehouseManageSystemUI
     {
         public InAndOutForm()
         {
-            InitializeComponent();
-            UITheme.ApplyForm(this);
+            try
+            {
+                InitializeComponent();
+                UITheme.ApplyForm(this);
+            }
+            catch (Exception ex)
+            {
+                utilLogManage.WriteLog(ex);
+            }
         }
 
         private void InAndOutForm_Load(object sender, EventArgs e)
@@ -46,6 +54,7 @@ namespace WarehouseManageSystemUI
             }
             catch (Exception ex)
             {
+                utilLogManage.WriteLog(ex);
                 MessageBox.Show("加载数据失败：" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -53,56 +62,70 @@ namespace WarehouseManageSystemUI
         //将选中的数据行填充到下方的label控件中
         private void FillFormByRow(DataRow row)
         {
-            if (row == null) return;
+            try
+            {
+                if (row == null) return;
 
-            string name = Convert.ToString(row["MaterialName"]);
-            string code = Convert.ToString(row["MaterialCode"]);
-            string category = Convert.ToString(row["categoryId"]);
-            string spec = Convert.ToString(row["Specification"]);
-            string desc = Convert.ToString(row["MaterialDescription"]);
-            string currentStock = Convert.ToString(row["CurrentStock"]);
-            string maxStock = Convert.ToString(row["MaxStock"]);
-            string minStock = Convert.ToString(row["MinStock"]);
-            string uunit = Convert.ToString(row["Unit"]);
+                string name = Convert.ToString(row["MaterialName"]);
+                string code = Convert.ToString(row["MaterialCode"]);
+                string category = Convert.ToString(row["categoryId"]);
+                string spec = Convert.ToString(row["Specification"]);
+                string desc = Convert.ToString(row["MaterialDescription"]);
+                string currentStock = Convert.ToString(row["CurrentStock"]);
+                string maxStock = Convert.ToString(row["MaxStock"]);
+                string minStock = Convert.ToString(row["MinStock"]);
+                string uunit = Convert.ToString(row["Unit"]);
 
 
-            label_name.Text = name;
-            label_Code.Text = code;
-            label_Category.Text = category;
-            label_Spec.Text = spec;
-            label_Desc.Text = desc;
-            label_CurrentStock.Text = currentStock;
-            label_MaxStock.Text = maxStock;
-            label_Uint.Text = uunit;
-            label_MinStock.Text = minStock;
+                label_name.Text = name;
+                label_Code.Text = code;
+                label_Category.Text = category;
+                label_Spec.Text = spec;
+                label_Desc.Text = desc;
+                label_CurrentStock.Text = currentStock;
+                label_MaxStock.Text = maxStock;
+                label_Uint.Text = uunit;
+                label_MinStock.Text = minStock;
+            }
+            catch (Exception ex)
+            {
+                utilLogManage.WriteLog(ex);
+            }
 
         }
 
         //点击某格自动填充表单
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            // 判断是否有选中的行
-            if (dataGridView1.CurrentRow != null && dataGridView1.CurrentRow.Index >= 0)
+            try
             {
-                DataRowView drv = dataGridView1.CurrentRow.DataBoundItem as DataRowView;
-
-                if (drv != null)
+                // 判断是否有选中的行
+                if (dataGridView1.CurrentRow != null && dataGridView1.CurrentRow.Index >= 0)
                 {
-                    FillFormByRow(drv.Row);
+                    DataRowView drv = dataGridView1.CurrentRow.DataBoundItem as DataRowView;
+
+                    if (drv != null)
+                    {
+                        FillFormByRow(drv.Row);
+                    }
+                }
+                else
+                {
+
+                    label_name.Text = "空";
+                    label_Code.Text = "空";
+                    label_Category.Text = "空";
+                    label_Spec.Text = "空";
+                    label_Desc.Text = "空";
+                    label_CurrentStock.Text = "空";
+                    label_MaxStock.Text = "空";
+                    label_Uint.Text = "空";
+                    label_MinStock.Text = "空";
                 }
             }
-            else
+            catch (Exception ex)
             {
-
-                label_name.Text = "空";
-                label_Code.Text = "空";
-                label_Category.Text = "空";
-                label_Spec.Text = "空";
-                label_Desc.Text = "空";
-                label_CurrentStock.Text = "空";
-                label_MaxStock.Text = "空";
-                label_Uint.Text = "空";
-                label_MinStock.Text = "空";
+                utilLogManage.WriteLog(ex);
             }
         }
 
@@ -121,15 +144,16 @@ namespace WarehouseManageSystemUI
             }
             catch (Exception ex)
             {
+                utilLogManage.WriteLog(ex);
                 MessageBox.Show("刷新数据失败：" + ex.Message);
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string name = textBox1.Text;
             try
             {
+                string name = textBox1.Text;
                 MaterialManageBLL bll = new MaterialManageBLL();
                 //获取筛选后的数据
                 dtAllData = bll.GetMaterialByName(name);
@@ -139,6 +163,7 @@ namespace WarehouseManageSystemUI
             }
             catch (Exception ex)
             {
+                utilLogManage.WriteLog(ex);
                 MessageBox.Show("刷新数据失败：" + ex.Message);
             }
         }
@@ -195,6 +220,7 @@ namespace WarehouseManageSystemUI
             }
             catch(Exception ex)
             {
+                utilLogManage.WriteLog(ex);
                 MessageBox.Show("出库失败！你是不是输入非数字了？");
             }
 
@@ -246,10 +272,10 @@ namespace WarehouseManageSystemUI
             }
             catch(Exception ex)
             {
+                utilLogManage.WriteLog(ex);
                 MessageBox.Show("入库失败！你是不是输入非数字了？");
             }
 
         }
     }
 }
-

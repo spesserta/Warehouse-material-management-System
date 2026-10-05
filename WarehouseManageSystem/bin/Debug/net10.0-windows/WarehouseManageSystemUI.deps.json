@@ -9,7 +9,8 @@
       "WarehouseManageSystemUI/1.0.0": {
         "dependencies": {
           "BLL": "1.0.0",
-          "Models": "1.0.0"
+          "Models": "1.0.0",
+          "Util": "1.0.0"
         },
         "runtime": {
           "WarehouseManageSystemUI.dll": {}
@@ -77,7 +78,8 @@
       "BLL/1.0.0": {
         "dependencies": {
           "DAL": "1.0.0",
-          "Models": "1.0.0"
+          "Models": "1.0.0",
+          "Util": "1.0.0"
         },
         "runtime": {
           "BLL.dll": {
@@ -89,7 +91,8 @@
       "DAL/1.0.0": {
         "dependencies": {
           "Models": "1.0.0",
-          "System.Data.SqlClient": "4.9.1"
+          "System.Data.SqlClient": "4.9.1",
+          "Util": "1.0.0"
         },
         "runtime": {
           "DAL.dll": {
@@ -101,6 +104,14 @@
       "Models/1.0.0": {
         "runtime": {
           "Models.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Util/1.0.0": {
+        "runtime": {
+          "Util.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -160,6 +171,11 @@
       "sha512": ""
     },
     "Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Util/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

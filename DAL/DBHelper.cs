@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using Util;
 
 namespace DAL
 {
@@ -29,6 +30,7 @@ namespace DAL
                 return dt;
             }catch (Exception ex)
             {
+                utilLogManage.WriteLog(ex);
                 return null;
 
             }finally 
@@ -52,8 +54,9 @@ namespace DAL
                 dapt.Fill(dt);
                 return dt;
             }
-            catch
+            catch (Exception ex)
             {
+                utilLogManage.WriteLog(ex);
                 return null;
             }
             finally
@@ -75,8 +78,9 @@ namespace DAL
                 cmd.ExecuteNonQuery();
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                utilLogManage.WriteLog(ex);
                 return false;
             }
             finally
@@ -95,8 +99,9 @@ namespace DAL
                 cmd.ExecuteNonQuery();
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                utilLogManage.WriteLog(ex);
                 return false;
             }
             finally

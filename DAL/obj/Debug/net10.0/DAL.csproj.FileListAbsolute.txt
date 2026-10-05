@@ -30,3 +30,5 @@ C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\DAL\obj\Debug\net10.0
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\DAL\obj\Debug\net10.0\refint\DAL.dll
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\DAL\obj\Debug\net10.0\DAL.pdb
 C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\DAL\obj\Debug\net10.0\ref\DAL.dll
+C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\DAL\bin\Debug\net10.0\Util.dll
+C:\Users\Legion\Desktop\项目合集\WarehouseManageSystem\DAL\bin\Debug\net10.0\Util.pdb

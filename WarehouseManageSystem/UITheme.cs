@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Util;
 
 namespace WarehouseManageSystemUI
 {
-    /// <summary>
-    /// 全局界面主题：统一字体、配色与控件样式，不影响任何业务逻辑。
-    /// 在窗体的构造函数中 InitializeComponent() 之后调用 UITheme.ApplyForm(this) 即可。
-    /// </summary>
+
     internal static class UITheme
     {
         // ---------------- 调色板 ----------------
@@ -40,190 +38,260 @@ namespace WarehouseManageSystemUI
         /// <summary>对整个窗体应用主题（在构造函数 InitializeComponent() 之后调用）。</summary>
         public static void ApplyForm(Form form)
         {
-            form.BackColor = Background;
-            form.ForeColor = TextMain;
-            // 使用与系统默认 Segoe UI 等高的字体，避免触发额外自动缩放
-            form.Font = BaseFont;
-            ApplyControls(form);
-            form.PerformLayout();
+            try
+            {
+                form.BackColor = Background;
+                form.ForeColor = TextMain;
+                // 使用与系统默认 Segoe UI 等高的字体，避免触发额外自动缩放
+                form.Font = BaseFont;
+                ApplyControls(form);
+                form.PerformLayout();
+            }
+            catch (Exception ex)
+            {
+                utilLogManage.WriteLog(ex);
+            }
         }
 
         private static void ApplyControls(Control parent)
         {
-            foreach (Control c in parent.Controls)
+            try
             {
-                if (c is MenuStrip menu)      StyleMenu(menu);
-                else if (c is Button btn)     StyleButton(btn);
-                else if (c is TextBox tb)     StyleTextBox(tb);
-                else if (c is ComboBox cb)    StyleComboBox(cb);
-                else if (c is DataGridView dgv) StyleGrid(dgv);
-                else if (c is Panel panel)    StylePanel(panel);
-                else if (c is Label lb)       StyleLabel(lb);
-                else if (c is PictureBox pb)  pb.BackColor = CardBg;
-                ApplyControls(c);
+                foreach (Control c in parent.Controls)
+                {
+                    if (c is MenuStrip menu)      StyleMenu(menu);
+                    else if (c is Button btn)     StyleButton(btn);
+                    else if (c is TextBox tb)     StyleTextBox(tb);
+                    else if (c is ComboBox cb)    StyleComboBox(cb);
+                    else if (c is DataGridView dgv) StyleGrid(dgv);
+                    else if (c is Panel panel)    StylePanel(panel);
+                    else if (c is Label lb)       StyleLabel(lb);
+                    else if (c is PictureBox pb)  pb.BackColor = CardBg;
+                    ApplyControls(c);
+                }
+            }
+            catch (Exception ex)
+            {
+                utilLogManage.WriteLog(ex);
             }
         }
 
         // ---------------- 按钮 ----------------
         private static void StyleButton(Button btn)
         {
-            btn.FlatStyle = FlatStyle.Flat;
-            btn.FlatAppearance.BorderSize = 0;
-            btn.UseVisualStyleBackColor = false;
-            btn.Font = FieldFont;
-            btn.Cursor = Cursors.Hand;
-            if (btn.Height < 32) btn.Height = 32;
+            try
+            {
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderSize = 0;
+                btn.UseVisualStyleBackColor = false;
+                btn.Font = FieldFont;
+                btn.Cursor = Cursors.Hand;
+                if (btn.Height < 32) btn.Height = 32;
 
-            string t = btn.Text ?? "";
-            Color baseColor, hoverColor, textColor = Color.White;
+                string t = btn.Text ?? "";
+                Color baseColor, hoverColor, textColor = Color.White;
 
-            if (t.Contains("删除") || t == "点我清空")
-            {
-                baseColor = Danger; hoverColor = ControlPaint.Dark(Danger);
-            }
-            else if (t == "入库")
-            {
-                baseColor = Success; hoverColor = ControlPaint.Dark(Success);
-            }
-            else if (t == "出库")
-            {
-                baseColor = Warning; hoverColor = ControlPaint.Dark(Warning);
-            }
-            else if (t.Contains("清空") || t == "取消" || t == "返回" || t == "退出")
-            {
-                baseColor = Color.FromArgb(233, 238, 246);
-                hoverColor = Color.FromArgb(220, 227, 238);
-                textColor = TextMain;
-            }
-            else
-            {
-                baseColor = Primary; hoverColor = PrimaryDark;
-            }
+                if (t.Contains("删除") || t == "点我清空")
+                {
+                    baseColor = Danger; hoverColor = ControlPaint.Dark(Danger);
+                }
+                else if (t == "入库")
+                {
+                    baseColor = Success; hoverColor = ControlPaint.Dark(Success);
+                }
+                else if (t == "出库")
+                {
+                    baseColor = Warning; hoverColor = ControlPaint.Dark(Warning);
+                }
+                else if (t.Contains("清空") || t == "取消" || t == "返回" || t == "退出")
+                {
+                    baseColor = Color.FromArgb(233, 238, 246);
+                    hoverColor = Color.FromArgb(220, 227, 238);
+                    textColor = TextMain;
+                }
+                else
+                {
+                    baseColor = Primary; hoverColor = PrimaryDark;
+                }
 
-            btn.BackColor = baseColor;
-            btn.ForeColor = textColor;
-            _btnBase[btn] = baseColor;
-            btn.MouseEnter += (s, e) => { if (_btnBase.TryGetValue(btn, out _)) btn.BackColor = hoverColor; };
-            btn.MouseLeave += (s, e) => { if (_btnBase.TryGetValue(btn, out _)) btn.BackColor = _btnBase[btn]; };
+                btn.BackColor = baseColor;
+                btn.ForeColor = textColor;
+                _btnBase[btn] = baseColor;
+                btn.MouseEnter += (s, e) => { if (_btnBase.TryGetValue(btn, out _)) btn.BackColor = hoverColor; };
+                btn.MouseLeave += (s, e) => { if (_btnBase.TryGetValue(btn, out _)) btn.BackColor = _btnBase[btn]; };
+            }
+            catch (Exception ex)
+            {
+                utilLogManage.WriteLog(ex);
+            }
         }
 
         // ---------------- 输入框 ----------------
         private static void StyleTextBox(TextBox tb)
         {
-            tb.BorderStyle = BorderStyle.FixedSingle;
-            tb.BackColor = FieldBg;
-            tb.ForeColor = TextMain;
-            tb.Font = FieldFont;
-            if (!tb.Multiline && tb.Height < 30) tb.Height = 30;
-            // 登录窗体的密码框显示掩码
-            if (tb.Name == "textBox2" && tb.Parent != null && tb.Parent.Name == "Form1")
-                tb.PasswordChar = '●';
+            try
+            {
+                tb.BorderStyle = BorderStyle.FixedSingle;
+                tb.BackColor = FieldBg;
+                tb.ForeColor = TextMain;
+                tb.Font = FieldFont;
+                if (!tb.Multiline && tb.Height < 30) tb.Height = 30;
+                // 登录窗体的密码框显示掩码
+                if (tb.Name == "textBox2" && tb.Parent != null && tb.Parent.Name == "Form1")
+                    tb.PasswordChar = '●';
+            }
+            catch (Exception ex)
+            {
+                utilLogManage.WriteLog(ex);
+            }
         }
 
         private static void StyleComboBox(ComboBox cb)
         {
-            cb.FlatStyle = FlatStyle.Flat;
-            cb.BackColor = FieldBg;
-            cb.ForeColor = TextMain;
-            cb.Font = FieldFont;
-            if (cb.Height < 30) cb.Height = 30;
+            try
+            {
+                cb.FlatStyle = FlatStyle.Flat;
+                cb.BackColor = FieldBg;
+                cb.ForeColor = TextMain;
+                cb.Font = FieldFont;
+                if (cb.Height < 30) cb.Height = 30;
+            }
+            catch (Exception ex)
+            {
+                utilLogManage.WriteLog(ex);
+            }
         }
 
         // ---------------- 数据表格 ----------------
         private static void StyleGrid(DataGridView dgv)
         {
-            dgv.BackgroundColor = Color.White;
-            dgv.BorderStyle = BorderStyle.None;
-            dgv.EnableHeadersVisualStyles = false;
-            dgv.RowHeadersVisible = false;
-            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            try
+            {
+                dgv.BackgroundColor = Color.White;
+                dgv.BorderStyle = BorderStyle.None;
+                dgv.EnableHeadersVisualStyles = false;
+                dgv.RowHeadersVisible = false;
+                dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = Navy;
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgv.ColumnHeadersDefaultCellStyle.Font = BoldFont;
-            dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgv.ColumnHeadersHeight = 38;
-            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+                dgv.ColumnHeadersDefaultCellStyle.BackColor = Navy;
+                dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dgv.ColumnHeadersDefaultCellStyle.Font = BoldFont;
+                dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgv.ColumnHeadersHeight = 38;
+                dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
-            dgv.RowTemplate.Height = 34;
-            dgv.RowsDefaultCellStyle.BackColor = Color.White;
-            dgv.RowsDefaultCellStyle.ForeColor = TextMain;
-            dgv.RowsDefaultCellStyle.SelectionBackColor = PrimaryLight;
-            dgv.RowsDefaultCellStyle.SelectionForeColor = PrimaryDark;
-            dgv.AlternatingRowsDefaultCellStyle.BackColor = RowAlt;
-            dgv.GridColor = Color.FromArgb(230, 235, 243);
-            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+                dgv.RowTemplate.Height = 34;
+                dgv.RowsDefaultCellStyle.BackColor = Color.White;
+                dgv.RowsDefaultCellStyle.ForeColor = TextMain;
+                dgv.RowsDefaultCellStyle.SelectionBackColor = PrimaryLight;
+                dgv.RowsDefaultCellStyle.SelectionForeColor = PrimaryDark;
+                dgv.AlternatingRowsDefaultCellStyle.BackColor = RowAlt;
+                dgv.GridColor = Color.FromArgb(230, 235, 243);
+                dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            }
+            catch (Exception ex)
+            {
+                utilLogManage.WriteLog(ex);
+            }
         }
 
         // ---------------- 面板（白色卡片 + 细边框） ----------------
         private static void StylePanel(Panel panel)
         {
-            panel.BackColor = CardBg;
-            panel.Paint += (s, e) =>
+            try
             {
-                ControlPaint.DrawBorder(e.Graphics, panel.ClientRectangle, Border, ButtonBorderStyle.Solid);
-            };
+                panel.BackColor = CardBg;
+                panel.Paint += (s, e) =>
+                {
+                    ControlPaint.DrawBorder(e.Graphics, panel.ClientRectangle, Border, ButtonBorderStyle.Solid);
+                };
+            }
+            catch (Exception ex)
+            {
+                utilLogManage.WriteLog(ex);
+            }
         }
 
         // ---------------- 标签 ----------------
         private static void StyleLabel(Label lb)
         {
-            Font f = lb.Font ?? BaseFont;
-            // 大标题
-            if (f.Size >= 18F)
+            try
             {
-                lb.Font = BigTitleFont;
-                lb.ForeColor = Primary;
-                return;
-            }
-            // 中标题
-            if (f.Size >= 13F && f.Bold)
-            {
-                lb.Font = TitleFont;
-                lb.ForeColor = Primary;
-                return;
-            }
-            // 必填红星等红色提示：保留红色，统一字体
-            if (lb.ForeColor.ToArgb() == Color.FromArgb(192, 0, 0).ToArgb())
-            {
-                lb.Font = new Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold);
-                return;
-            }
-            // 设计时已指定强调色/次要色：保留颜色，统一字体
-            if (lb.ForeColor.ToArgb() != SystemColors.ControlText.ToArgb())
-            {
+                Font f = lb.Font ?? BaseFont;
+                // 大标题
+                if (f.Size >= 18F)
+                {
+                    lb.Font = BigTitleFont;
+                    lb.ForeColor = Primary;
+                    return;
+                }
+                // 中标题
+                if (f.Size >= 13F && f.Bold)
+                {
+                    lb.Font = TitleFont;
+                    lb.ForeColor = Primary;
+                    return;
+                }
+                // 必填红星等红色提示：保留红色，统一字体
+                if (lb.ForeColor.ToArgb() == Color.FromArgb(192, 0, 0).ToArgb())
+                {
+                    lb.Font = new Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold);
+                    return;
+                }
+                // 设计时已指定强调色/次要色：保留颜色，统一字体
+                if (lb.ForeColor.ToArgb() != SystemColors.ControlText.ToArgb())
+                {
+                    lb.Font = new Font("Microsoft YaHei UI", f.Bold ? 9.5F : 9F, f.Bold ? FontStyle.Bold : FontStyle.Regular);
+                    return;
+                }
+                // 默认前景：统一主文字色
+                lb.ForeColor = TextMain;
                 lb.Font = new Font("Microsoft YaHei UI", f.Bold ? 9.5F : 9F, f.Bold ? FontStyle.Bold : FontStyle.Regular);
-                return;
             }
-            // 默认前景：统一主文字色
-            lb.ForeColor = TextMain;
-            lb.Font = new Font("Microsoft YaHei UI", f.Bold ? 9.5F : 9F, f.Bold ? FontStyle.Bold : FontStyle.Regular);
+            catch (Exception ex)
+            {
+                utilLogManage.WriteLog(ex);
+            }
         }
 
         // ---------------- 菜单栏 ----------------
         private static void StyleMenu(MenuStrip menu)
         {
-            menu.BackColor = Navy;
-            menu.ForeColor = Color.White;
-            menu.Renderer = new ToolStripProfessionalRenderer(new MenuColorTable());
-            menu.Padding = new Padding(12, 6, 12, 6);
-            foreach (ToolStripItem item in menu.Items)
+            try
             {
-                StyleMenuItem(item, false);
+                menu.BackColor = Navy;
+                menu.ForeColor = Color.White;
+                menu.Renderer = new ToolStripProfessionalRenderer(new MenuColorTable());
+                menu.Padding = new Padding(12, 6, 12, 6);
+                foreach (ToolStripItem item in menu.Items)
+                {
+                    StyleMenuItem(item, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                utilLogManage.WriteLog(ex);
             }
         }
 
         private static void StyleMenuItem(ToolStripItem item, bool isDropDown)
         {
-            item.Font = new Font("Microsoft YaHei UI", 9.5F);
-            item.ForeColor = isDropDown ? TextMain : Color.White;
-            if (item is ToolStripMenuItem mi)
+            try
             {
-                foreach (ToolStripItem sub in mi.DropDownItems)
+                item.Font = new Font("Microsoft YaHei UI", 9.5F);
+                item.ForeColor = isDropDown ? TextMain : Color.White;
+                if (item is ToolStripMenuItem mi)
                 {
-                    StyleMenuItem(sub, true);
+                    foreach (ToolStripItem sub in mi.DropDownItems)
+                    {
+                        StyleMenuItem(sub, true);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                utilLogManage.WriteLog(ex);
             }
         }
 
@@ -248,4 +316,3 @@ namespace WarehouseManageSystemUI
         }
     }
 }
-
