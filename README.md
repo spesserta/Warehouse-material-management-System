@@ -1,4 +1,4 @@
-# 仓库物料管理系统V2.0
+# 仓库物料管理系统V2.1
 
 ### 一、项目简介
 
@@ -147,17 +147,6 @@
 <img width="1915" height="833" alt="image" src="https://github.com/user-attachments/assets/4f1f1345-d903-4406-9c97-5d8261ccf1ed" />
 
 
->获取数据库连接字符串的教程可以参考以下方法
+### 四、日志存放路径
 
-<img width="1459" height="979" alt="image" src="https://github.com/user-attachments/assets/85f52191-ed30-4281-9759-07061c03606a" />
-
-<img width="1231" height="854" alt="image" src="https://github.com/user-attachments/assets/ca537e76-00a6-49d6-ba8b-cd18e0f45a14" />
-
-<img width="771" height="757" alt="image" src="https://github.com/user-attachments/assets/0b056e63-c635-43d6-8984-53fe14608ed4" />
-
-
-<img width="760" height="918" alt="image" src="https://github.com/user-attachments/assets/fa724add-b13d-48c3-a823-757579730a2a" />
-
-<img width="715" height="888" alt="image" src="https://github.com/user-attachments/assets/03dfb6e3-f116-40b6-b172-eeb87be3fb3b" />
-
-<img width="719" height="904" alt="image" src="https://github.com/user-attachments/assets/d787db17-a703-4da0-ba7e-150706e5ece8" />
+D:\Logs
